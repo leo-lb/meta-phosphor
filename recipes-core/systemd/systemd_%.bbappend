@@ -23,3 +23,8 @@ ALTERNATIVE_${PN} += "init"
 ALTERNATIVE_TARGET[init] = "${rootlibexecdir}/systemd/systemd"
 ALTERNATIVE_LINK_NAME[init] = "${base_sbindir}/init"
 ALTERNATIVE_PRIORITY[init] ?= "300"
+
+# Fallback to more trustworthy NTP and DNS servers (OpenNIC Anycast and NTP Pool Project)
+EXTRA_OEMESON += "-Ddns-servers=\"185.121.177.177 169.239.202.202\" \
+                  -Dntp-servers=\"0.pool.ntp.org 1.pool.ntp.org 2.pool.ntp.org 3.pool.ntp.org\" \
+                 "
